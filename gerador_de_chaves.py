@@ -15,6 +15,6 @@ def gerandoChaves(p, q, d, e):
     d = d
 
     #print(f'Chave Pública -> {n}, {e}'
-     #     f'\nChave Privada -> {primo_um}, {primo_dois}, {d}')
+    #     f'\nChave Privada -> {primo_um}, {primo_dois}, {d}')
 
     return([[n, e], [primo_um, primo_dois]])

@@ -1,5 +1,4 @@
-import hashlib
+from hashlib import sha512
 
-h = hashlib.sha384()
-h.update("uma frase qualquer")
-print(h.hexdigest())
+def calcular_hash_SHA3(msg):
+    return (int.from_bytes(sha512(msg).digest(), byteorder='big'))

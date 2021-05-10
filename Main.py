@@ -8,7 +8,15 @@ from decifracao import decifrarMensagem
 
 def RSA_Creator(msg, fileNameCreate):
     # generate a 1024-bit RSA key-pair
-    [PublicKey, PrivateKey] = gerandoChaves(random.randint(0000, 9999), random.randint(0000, 9999), random.randint(0000, 9999), random.randint(0000, 9999))
+    p = random.randint(0000, 9999)
+    p = find_nearest_prime(p)
+    q = random.randint(0000, 9999)
+    q = find_nearest_prime(q)
+    r = random.randint(0000, 9999)
+    r = find_nearest_prime(r)
+    s = random.randint(0000, 9999)
+    s = find_nearest_prime(s)
+    [PublicKey, PrivateKey] = gerandoChaves(p, q, r, s)
 
     print(f"Public key:  (n={hex(PublicKey[0])}, e={hex(PublicKey[1])})")
     print(f"Private key: (n={hex(PrivateKey[0])}, d={hex(PrivateKey[1])})")
@@ -57,7 +65,24 @@ def RSA_Reader(fileNameRead):
 
     # 3) Calculate and compare the hash of the file
 
+def checkPrimo(n):
+    for val in range(2,n):
+        if n % val == 0:
+            return False
 
+    return True
+
+def find_nearest_prime(num):
+
+    while num < 100000:
+
+        if checkPrimo(num):
+
+            return num
+
+        else:
+
+            num += 1
 # Passos para executar
 msg = "This is a really important message that really needs to be secured Teste 123"
 fileNameCreate = "data.pkl"

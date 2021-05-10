@@ -1,13 +1,10 @@
-# Aqui usaremos a fórmula C = Cd mod (n)
-# M -> é o valor em Codificado
-# d -> é o valor de uma das chaves privadas
-# n -> é o valor de n
-# Após isso, você terá sua mensagem codificada em RSA
+def decifrarMensagem(msgCifrada, PublicKeyN, PublicKeyE):
+    mensagemDecifrada = []
 
-def DecodificarAscii(num):
-    numero = num
-    for letra in numero:
+    for pos in range(len(msgCifrada)):
+        letraDecifrada = ((msgCifrada[pos] ** PublicKeyE)% PublicKeyN)
+        print(f"LetraCecifrada: {letraDecifrada}")
+        print(f"LetraDecifrada: {chr(letraDecifrada)}")
+        mensagemDecifrada.append(chr(letraDecifrada))
 
-        asc = {letra: chr(letra)}
-
-        print(asc)
+    return(mensagemDecifrada)

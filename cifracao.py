@@ -1,15 +1,8 @@
-def PreCodificarAscii(texto):
-    palavra = texto
-    for letra in palavra:
+def cifrarMensagem(msg, PublicKeyN, PublicKeyE):
+    mensagemCifrada = []
 
-        asc = {letra: ord(letra)}
+    for letra in msg:
+        asc = ord(letra)
+        mensagemCifrada.append((asc ** PublicKeyE)% PublicKeyN)
 
-        print(asc)
-
-# Aqui usaremos a fórmula C = Me mod (n)
-# M -> é o valor em Ascii
-# e -> é o valor de e
-# n -> é o valor de n
-
-
-PreCodificarAscii("Teste de texto bem aqui")
+    return(mensagemCifrada)

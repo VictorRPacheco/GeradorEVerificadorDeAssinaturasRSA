@@ -59,11 +59,20 @@ def RSA_Reader(fileNameRead):
 
     # 2) Decrypt the sign
     mensagemParaDecifrar = fileRead["MensagemCifrada"]
-    PublicKeyParaDecifrar = fileRead["PublicKey"]
-    # mensagemDecifrada = decifrarMensagem(mensagemParaDecifrar, PublicKeyParaDecifrar[0], PublicKeyParaDecifrar[1])
-    # print(f"mensagemDecifrada: {mensagemDecifrada}")
+    PrivateKeyParaDecifrar = fileRead["PrivateKey"]
+    mensagemDecifrada = decifrarMensagem(mensagemParaDecifrar, PrivateKeyParaDecifrar[0], PrivateKeyParaDecifrar[1])
+    print(f"mensagemDecifrada: {mensagemDecifrada}")
 
     # 3) Calculate and compare the hash of the file
+    hashMsgDecifrada = calcular_hash_SHA3(mensagemDecifrada)
+    hashMsgCifrada = fileRead["Hash"]
+    if(hashMsgDecifrada == hashMsgCifrada):
+        print(f"Os hashs são iguais")
+    else:
+        print(f"Os hashs são diferentes")
+    print(f"hashMsgDecifrada: {hashMsgDecifrada}, hashMsgCifrada: {hashMsgCifrada}")
+
+
 
 def checkPrimo(n):
     for val in range(2,n):
@@ -83,7 +92,9 @@ def find_nearest_prime(num):
         else:
 
             num += 1
-# Passos para executar
+
+
+# Passos a executar
 msg = "This is a really important message that really needs to be secured Teste 123"
 fileNameCreate = "data.pkl"
 RSA_Creator(msg, fileNameCreate)

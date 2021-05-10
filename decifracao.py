@@ -1,10 +1,8 @@
-def decifrarMensagem(msgCifrada, PublicKeyN, PublicKeyE):
+def decifrarMensagem(msgCifrada, PrivateKeyN, PrivateKeyD):
     mensagemDecifrada = []
-
     for pos in range(len(msgCifrada)):
-        letraDecifrada = ((msgCifrada[pos] ** PublicKeyE)% PublicKeyN)
-        print(f"LetraCecifrada: {letraDecifrada}")
-        print(f"LetraDecifrada: {chr(letraDecifrada)}")
+        letraDecifrada = ((msgCifrada[pos] ** PrivateKeyD)% PrivateKeyN)
+        print(f"Caracteres da frase decifrada: {letraDecifrada}")
         mensagemDecifrada.append(chr(letraDecifrada))
 
-    return(mensagemDecifrada)
+    return(''.join(mensagemDecifrada))

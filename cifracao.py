@@ -3,6 +3,7 @@ def cifrarMensagem(msg, PublicKeyN, PublicKeyE):
 
     for letra in msg:
         asc = ord(letra)
+        print(f"Caracteres da frase original: {asc}")
         mensagemCifrada.append((asc ** PublicKeyE)% PublicKeyN)
 
     return(mensagemCifrada)

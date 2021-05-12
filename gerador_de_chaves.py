@@ -1,7 +1,8 @@
 import random
+from datetime import datetime
 
 def gerandoChaves():
-    print("STATUS: Gerando chaves")
+    print(f"{datetime.now()} STATUS: Gerando chaves")
 
     primo_um = find_nearest_prime(random.randint(0000, 9999))
     primo_dois = find_nearest_prime(random.randint(0000, 9999))

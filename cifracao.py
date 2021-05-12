@@ -1,5 +1,7 @@
+from datetime import datetime
+
 def cifrarMensagem(msg, PublicKeyN, PublicKeyE):
-    print("STATUS: Cifrando a mensagem, isso pode demorar um pouco")
+    print(f"{datetime.now()} STATUS: Cifrando a mensagem, isso pode demorar um pouco")
 
     mensagemCifrada = []
 
